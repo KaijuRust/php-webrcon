@@ -75,7 +75,7 @@ class WebRconClass
     {
         $response = json_decode($this->client->receive(), true);
         // decode the message as json or the original text if json decode failed
-        $response['Message'] = json_decode($response['Message']) ?? $response['Message'];
+        $response['Message'] = json_decode($response['Message'], true) ?? $response['Message'];
 
         if ($this->debug) {
             $this->logger->debug('Response', [$response]);
